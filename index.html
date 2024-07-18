@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>cutit</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <form id="measurementForm">
+        <div class="main">
+            <div>Length <br>
+                <div>
+                    <input type="number" step="0.25" id="length" name="length" value="28">
+
+                </div>
+            </div>
+            <div>
+                Chest <br>
+                <div>
+                    <input type="number" step="0.25" id="chest" name="chest" value="35">
+
+                </div>
+            </div>
+            <div> Shoulder <br>
+                <div>
+                    <input type="number" step="0.25" id="shoulder" name="shoulder" value="18">
+
+                </div>
+            </div>
+            <div> Hand <br>
+                <div>
+                    <input type="number" step="0.25" id="hand" name="hand" value="16">
+
+                </div>
+            </div>
+            <div> Hand Length <br>
+                <div>
+                    <input type="number" step="0.25" id="handlength" name="handlength" value="24">
+
+                </div>
+            </div>
+            <div>
+                Collor
+                <br>
+                <div>
+                    <input type="number" step="0.25" id="collor" name="collor" value="15">
+
+                </div>
+            </div>
+            <button class="submit" type="submit">SUBMIT</button>
+            
+
+        </div>
+        <div class="left" >
+            <div class="alter">
+                <div>Hand Down <br>
+                    <input type="number" step="0.25" id="handdown" name="handdown" value="8">
+                </div>
+                <div>Neck <br>
+                    <input type="number" step="0.125" id="neck" name="collor" value="2.75">
+                </div>
+                <div>Stomach <br>
+                    <input type="number" step="0.25" id="stomach" name="stomach" value="1">
+                </div>
+                <div>Shoulder Hgt <br>
+                    <input type="number" step="0.25" id="shoulderlen" name="shoulderlen" value="5.5">
+                </div>
+                
+            </div>
+        </div>
+        <div class="right">
+            <div class="alter">
+                <div>Arm <br>
+                    <input type="number" step="0.25" id="arm" name="arm" value="2.5">
+                </div>
+                <div>arm round <br>
+                    <input type="number" step="0.25" id="armround" name="armround" value="0.5" />
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+    <div class="table">
+        <div class="canvas-container">
+            <canvas id="mycanvas" width="960" height="480"></canvas>
+
+        </div>
+        <div class="canvas-container">
+            <canvas id="mycanvas2" width="960" height="480"></canvas>
+
+        </div>
+        <div class="canvas-container">
+            <canvas id="mycanvas3" width="960" height="480"></canvas>
+
+        </div>
+        <div class="canvas-container">
+            <canvas id="mycanvas4" width="960" height="480"></canvas>
+
+        </div>
+
+    </div>
+    <div class="rightcon">
+        <div class="control" id="control1">
+            <button onclick="moveCanvas('mycanvas', 'up')" class="up">&#9650</button>
+            <button onclick="moveCanvas('mycanvas', 'down')" class="down">&#9660</button>
+            <button onclick="moveCanvas('mycanvas', 'left')" class="left">&#9664</button>
+            <button onclick="moveCanvas('mycanvas', 'right')" class="right">&#9654</button>
+        </div>
+        <div class="control" id="control2">
+            <button onclick="moveCanvas('mycanvas2', 'up')" class="up">&#9650</button>
+            <button onclick="moveCanvas('mycanvas2', 'down')" class="down">&#9660</button>
+            <button onclick="moveCanvas('mycanvas2', 'left')" class="left">&#9664</button>
+            <button onclick="moveCanvas('mycanvas2', 'right')" class="right">&#9654</button>
+        </div>
+        <div class="control" id="control3">
+            <button onclick="moveCanvas('mycanvas3', 'up')" class="up">&#9650</button>
+            <button onclick="moveCanvas('mycanvas3', 'down')" class="down">&#9660</button>
+            <button onclick="moveCanvas('mycanvas3', 'left')" class="left">&#9664</button>
+            <button onclick="moveCanvas('mycanvas3', 'right')" class="right">&#9654</button>
+        </div>
+        <div class="control" id="control4">
+            <button onclick="moveCanvas('mycanvas4', 'up')" class="up">&#9650</button>
+            <button onclick="moveCanvas('mycanvas4', 'down')" class="down">&#9660</button>
+            <button onclick="moveCanvas('mycanvas4', 'left')" class="left">&#9664</button>
+            <button onclick="moveCanvas('mycanvas4', 'right')" class="right">&#9654</button>
+        </div>
+    </div>
+
+
+    <div class="buttons">
+        <button class="front">FRONT</button>
+        <button class="back">BACK</button>
+        <button class="hands">HANDS</button>
+        <button class="shoulder">SHOULDER</button>
+    </div>
+    <div class="colors">
+        <button onclick="changeColor('rgb(246, 53, 53)')" class="red">RED</button>
+        <button onclick="changeColor('rgb(255, 255, 255)')" class="white">WHITE</button>
+        <button onclick="changeColor('rgb(53, 246, 53)')" class="green">GREEN</button>
+        <button onclick="changeColor('rgb(53, 53, 246)')" class="blue">BLUE</button>
+        <br/>
+        <button onclick="changeColor('rgb(246, 53, 246)')" class="pink">PINK</button>
+        <button onclick="changeColor('rgb(246, 246, 53)')" class="yellow">YELLOW</button>
+        <button onclick="changeColor('rgb(53, 246, 246)')" class="cyan">CYAN</button>
+        <button onclick="changeColor('rgb(0, 0, 0)')" class="black">BLACK</button>
+
+    </div>
+    <div class="canvascolors">
+        <button onclick="changeCanvas('rgb(255, 255, 255)')" class="white">WHITE</button>
+        <button onclick="changeCanvas('rgb(0, 0, 0)')" class="black">BLACK</button>
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".front").click(function () {
+                document.getElementById("mycanvas").style.display = "block";
+                document.getElementById("mycanvas2").style.display = "none";
+                document.getElementById("mycanvas3").style.display = "none";
+                document.getElementById("mycanvas4").style.display = "none";
+
+                document.getElementById("control1").style.display = "block";
+                document.getElementById("control2").style.display = "none";
+                document.getElementById("control3").style.display = "none";
+                document.getElementById("control4").style.display = "none";
+            });
+            $(".back").click(function () {
+                document.getElementById("mycanvas").style.display = "none";
+                document.getElementById("mycanvas2").style.display = "block";
+                document.getElementById("mycanvas3").style.display = "none";
+                document.getElementById("mycanvas4").style.display = "none";
+
+                document.getElementById("control1").style.display = "none";
+                document.getElementById("control2").style.display = "block";
+                document.getElementById("control3").style.display = "none";
+                document.getElementById("control4").style.display = "none";
+
+            });
+            $(".hands").click(function () {
+                document.getElementById("mycanvas").style.display = "none";
+                document.getElementById("mycanvas2").style.display = "none";
+                document.getElementById("mycanvas3").style.display = "block";
+                document.getElementById("mycanvas4").style.display = "none";
+
+                document.getElementById("control1").style.display = "none";
+                document.getElementById("control2").style.display = "none";
+                document.getElementById("control3").style.display = "block";
+                document.getElementById("control4").style.display = "none";
+            });
+            $(".shoulder").click(function () {
+                document.getElementById("mycanvas").style.display = "none";
+                document.getElementById("mycanvas2").style.display = "none";
+                document.getElementById("mycanvas3").style.display = "none";
+                document.getElementById("mycanvas4").style.display = "block";
+
+                document.getElementById("control1").style.display = "none";
+                document.getElementById("control2").style.display = "none";
+                document.getElementById("control3").style.display = "none";
+                document.getElementById("control4").style.display = "block";
+            });
+        });
+
+        function increment(element) {
+            const inputId = element.getAttribute('data-input');
+            const input = document.getElementById(inputId);
+            input.stepUp();
+        }
+
+        function decrement(element) {
+            const inputId = element.getAttribute('data-input');
+            const input = document.getElementById(inputId);
+            input.stepDown();
+        }
+    </script>
+</body>
+
+</html>
